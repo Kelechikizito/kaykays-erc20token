@@ -1,66 +1,87 @@
-## Foundry
+# 🪙 KAYKAY (KK) – A Simple ERC-20 Token
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+KAYKAY (KK) is a basic ERC-20 token built with Solidity using OpenZeppelin’s secure and battle-tested libraries. It follows the standard token pattern and can be used for testing, learning, or integration into dApps.
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## 🔍 Overview
 
-## Documentation
+* ERC-20 compatible token
+* Built using OpenZeppelin Contracts
+* Includes basic token functionality: transfer, balance check, allowance, etc.
+* Fully deployed to the Ethereum Sepolia Testnet
+* Easy to extend for custom logic
 
-https://book.getfoundry.sh/
+---
 
-## Usage
+## 📦 Features
 
-### Build
+* ✅ Standard ERC-20 functions (`transfer`, `approve`, `transferFrom`, `balanceOf`, `totalSupply`)
+* ✅ Built on OpenZeppelin's secure contract libraries
+* ✅ Custom token name (`KAYKAY`) and symbol (`KK`)
+* ✅ Fixed total supply (you define it during deployment)
+* ✅ Easily extendable for burning, minting, and pausing features
 
-```shell
-$ forge build
+---
+
+## 🧰 Dependencies
+
+* [OpenZeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)
+* Solidity ^0.8.0
+* Foundry (for development and testing)
+
+---
+
+## 🛠 Deployment
+
+### Constructor Example
+
+```solidity
+constructor(uint256 initialSupply) ERC20("KayKay", "KK") {
+    _mint(msg.sender, initialSupply);
+}
 ```
 
-### Test
+This creates a token named **KAYKAY**, with symbol **KK**, and mints `1,000 KK` tokens to the deployer.
 
-```shell
-$ forge test
-```
+---
 
-### Format
+## ✨ Usage
 
-```shell
-$ forge fmt
-```
+After deployment, users can:
 
-### Gas Snapshots
+* 📤 Send tokens to other addresses
+* 🔒 Approve other addresses to spend tokens
+* 🔁 Use `transferFrom` for delegated transfers
+* 📊 Check balances and total supply
 
-```shell
-$ forge snapshot
-```
+---
 
-### Anvil
+## 🔓 Access Control
 
-```shell
-$ anvil
-```
+Currently, only the deployer mints tokens at deployment. No special owner functions are included unless you extend it (e.g., Ownable, Mintable, Burnable).
 
-### Deploy
+---
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+## 📘 To-Do / Future Improvements
 
-### Cast
+* Add **burnable** or **mintable** features
+* Add **pausable** functionality for emergency stops
+* Integrate with **frontend UI**
+* Deploy to **mainnet or other testnets**
+* Use **Ownable** for admin control
 
-```shell
-$ cast <subcommand>
-```
+---
 
-### Help
+## 📝 License
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+MIT License
+
+---
+
+## 🙌 Acknowledgements
+
+Built with 💛 using [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts) and [Foundry](https://github.com/foundry-rs/foundry)
+
+---
+

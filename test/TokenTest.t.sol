@@ -46,11 +46,10 @@ contract TokenTest is Test {
 
     function testAllowanceWorks() public {
         uint256 initialAllowance = 10 ether;
+        uint256 transferAmount = 5 ether;
 
         vm.prank(kelechi);
         token.approve(ebubechi, initialAllowance);
-
-        uint256 transferAmount = 5 ether;
 
         vm.prank(ebubechi);
         token.transferFrom(kelechi, ebubechi, transferAmount);
